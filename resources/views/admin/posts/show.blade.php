@@ -1,11 +1,16 @@
 @extends('layouts.admin')
+@section('page-title')
+Showing {{ $post->title }}
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8 p-3">
             <h2>{{ $post->id }}</h2>
             <h2>{{ $post->id }}: {{ $post->title }}</h2>
-            <h2 class="d-inline-block px-3 rounded" style='background:{{$post->category->color}}'> {{ $post->category->name }}</h2>
+            @if ($post->category)
+                <h2 class="d-inline-block px-3 rounded" style='background:{{$post->category->color}}'> {{ $post->category->name }}</h2>
+            @endif
             <div class="image">
                 <img src="{{ $post->image_url }}" class="img-fluid" alt="img">
             </div>

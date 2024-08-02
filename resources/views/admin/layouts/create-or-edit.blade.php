@@ -10,44 +10,18 @@
                     <h1>@yield('page-title')</h1>
                 </div>
                 <div class="mb-3 ">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control mb-2" value="{{ old('title', $post->title)}}">
-                    @error('title')
-                    <div class="alert alert-danger mb-3">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    @error('category_id')
-                    <div class="alert alert-danger mb-3">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                    <select class="form-select" aria-label="Default select example" name="category_id">
-                        @foreach ( $categories as $category )
-                        <option value="{{ $category->id}}"
-                            {{ ($category->id == old('category_id', $post->category_id)) ? 'selected' :''}}
-                            >{{ $category->name }}</option>
-                        @endforeach
-
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="image_url">Image Url</label>
-                    <input type="text" name="image_url" id="image_url" class="form-control mb-2" value="{{ old('image_url', $post->image_url)}}">
-                    @error('image_url')
+                    <label for="name">Category name</label>
+                    <input type="text" name="name" id="name" class="form-control mb-2" minlength="2" maxlength="50" required value="{{ old('name', $category->name)}}">
+                    @error('name')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
                     </div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="content">Content</label>
-                    <textarea name="content" id="content" rows="20" cols="88" class="form-controll mb-2" >{{ old('content', $post->content)}}</textarea>
-                    @error('content')
+                    <label for="color">Color</label>
+                    <input type="color" name="color" id="color" class="form-control mb-2" value="{{ old('color', $category->color)}}">
+                    @error('color')
                     <div class="alert alert-danger mb-3">
                         {{ $message }}
                     </div>
